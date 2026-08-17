@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog — Your Product</title>
+<meta name="description" content="What's new, shipped continuously.">
+<!-- EDIT: product name, release entries below. Duplicate a .rel block per release. Colors in :root. -->
+<style>
+  :root{
+    --bg:#08100b; --surface:#101a14; --hair:#1e2f24;
+    --ink:#E6F1E9; --mute:#95ab9e; --faint:#657a6f;
+    --accent:#33D17A; --accent-2:#88E7B4; --accent-dim:#1a5133;
+    --sans:'Helvetica Neue',Helvetica,Arial,system-ui,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+    --max:760px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:
+      radial-gradient(800px 420px at 50% -10%, rgba(51,209,122,.13), transparent 70%),
+      var(--bg);
+    color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin-inline:auto;padding-inline:20px}
+
+  header{border-bottom:1px solid var(--hair)}
+  .hin{display:flex;align-items:center;justify-content:space-between;padding:15px 0;gap:16px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:-.01em}
+  .brand i{width:11px;height:11px;border-radius:3px;background:var(--accent);display:block}
+  .sub-btn{font-size:13.5px;font-weight:700;border:1px solid var(--hair);
+    padding:8px 14px;border-radius:9px;color:var(--mute);transition:.15s}
+  .sub-btn:hover{border-color:var(--accent);color:var(--accent-2)}
+
+  .hero{padding:clamp(48px,8vw,74px) 0 34px}
+  h1{font-size:clamp(30px,6vw,42px);letter-spacing:-.025em;font-weight:800}
+  .lede{color:var(--mute);margin-top:14px;font-size:17px;max-width:48ch}
+
+  .rel{border-top:1px solid var(--hair);padding:34px 0}
+  .rel-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .ver{font-family:var(--mono);font-size:13px;font-weight:700;color:#08100b;
+    background:var(--accent);padding:3px 9px;border-radius:6px}
+  .ver.minor{background:var(--accent-dim);color:var(--accent-2)}
+  .date{font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+  .rel h2{font-size:21px;letter-spacing:-.015em;font-weight:700;margin-top:14px}
+  .rel > p{color:var(--mute);margin-top:10px}
+
+  .kind{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-top:22px}
+  .rel ul{list-style:none;margin-top:9px;display:grid;gap:7px}
+  .rel li{color:var(--mute);font-size:15px;padding-left:18px;position:relative}
+  .rel li::before{content:"—";position:absolute;left:0;color:var(--faint)}
+  .rel code{font-family:var(--mono);font-size:.88em;background:var(--surface);
+    border:1px solid var(--hair);padding:1px 6px;border-radius:5px;color:var(--accent-2)}
+
+  .breaking{background:var(--surface);border:1px solid var(--hair);border-left:3px solid #E5484D;
+    border-radius:10px;padding:14px 16px;margin-top:18px}
+  .breaking strong{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:#FF8A8D}
+  .breaking p{color:var(--mute);font-size:14.5px;margin-top:6px}
+
+  footer{border-top:1px solid var(--hair);margin-top:20px;padding:26px 0 50px;
+    color:var(--faint);font-family:var(--mono);font-size:12.5px}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap hin">
+  <div class="brand"><i></i>Halcyon</div> <!-- EDIT -->
+  <a class="sub-btn" href="#">Subscribe to updates</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Changelog</h1>
+    <p class="lede">Everything we ship, in the order we shipped it. Follow the RSS feed or subscribe for a monthly digest.</p>
+  </section>
+
+  <!-- EDIT: duplicate a .rel block for each release -->
+  <article class="rel">
+    <div class="rel-head"><span class="ver">2.0.0</span><span class="date">15 March 2026</span></div>
+    <h2>A full rewrite</h2>
+    <p>Half the memory, twice the throughput, and a plugin API we're finally willing to commit to long term.</p>
+
+    <div class="kind">Added</div>
+    <ul>
+      <li>Plugin API with a stable, versioned surface</li>
+      <li>Multi-window sessions that survive a restart</li>
+      <li>Native <code>arm64</code> builds for Apple silicon and Linux</li>
+    </ul>
+
+    <div class="kind">Changed</div>
+    <ul>
+      <li>Rendering moved off the main thread — input stays responsive under load</li>
+      <li>Configuration is now TOML; existing JSON auto-migrates on first run</li>
+    </ul>
+
+    <div class="kind">Fixed</div>
+    <ul>
+      <li>Memory growth during sessions longer than about six hours</li>
+      <li>Focus loss when reattaching an external display</li>
+    </ul>
+
+    <div class="breaking">
+      <strong>Breaking</strong>
+      <p>The <code>halcyon.json</code> format is removed. Run <code>halcyon migrate</code> once — it rewrites your config in place and keeps a backup.</p>
+    </div>
+  </article>
+
+  <article class="rel">
+    <div class="rel-head"><span class="ver minor">1.9.2</span><span class="date">2 February 2026</span></div>
+    <h2>Stability pass</h2>
+    <div class="kind">Fixed</div>
+    <ul>
+      <li>Crash when opening a file with mixed line endings</li>
+      <li>Search results occasionally skipping the final match</li>
+      <li><code>--watch</code> missing changes on network volumes</li>
+    </ul>
+  </article>
+
+  <article class="rel">
+    <div class="rel-head"><span class="ver minor">1.9.0</span><span class="date">11 January 2026</span></div>
+    <h2>Workspaces</h2>
+    <div class="kind">Added</div>
+    <ul>
+      <li>Named workspaces with independent settings</li>
+      <li><code>halcyon open &lt;workspace&gt;</code> in the CLI</li>
+    </ul>
+    <div class="kind">Changed</div>
+    <ul>
+      <li>Startup is roughly 40% faster on cold launch</li>
+    </ul>
+  </article>
+</main>
+
+<footer class="wrap">© 2026 Halcyon · <a href="#" style="color:var(--accent-2)">RSS</a></footer>
+
+</body>
+</html>

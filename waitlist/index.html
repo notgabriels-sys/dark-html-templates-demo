@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coming soon — Your Product</title>
+<meta name="description" content="Join the waitlist.">
+<!-- EDIT: headline, copy, and the form action. Point the <form> at your own endpoint
+     (Formspree, Buttondown, ConvertKit, Mailchimp…). Colors in :root. -->
+<style>
+  :root{
+    --bg:#0d0812; --surface:#18101f; --hair:#2a1c35;
+    --ink:#EFE7F3; --mute:#ab9cb5; --faint:#77697f;
+    --accent:#C86AD8; --accent-2:#E1A6EC; --accent-dim:#4d2657;
+    --sans:'Helvetica Neue',Helvetica,Arial,system-ui,sans-serif;
+    --mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;background:
+      radial-gradient(760px 420px at 50% -6%, rgba(200,106,216,.20), transparent 70%),
+      var(--bg);
+    color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    display:grid;place-items:center;padding:clamp(36px,8vw,64px) 20px;line-height:1.6}
+  a{color:inherit}
+  .col{width:100%;max-width:540px;text-align:center}
+
+  .mark{width:46px;height:46px;border-radius:13px;margin:0 auto 26px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-dim));
+    display:grid;place-items:center;font-weight:800;font-size:20px;color:#0d0812}
+
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--accent-2)}
+  h1{font-size:clamp(31px,7vw,46px);letter-spacing:-.03em;font-weight:800;margin-top:14px;line-height:1.1}
+  .lede{color:var(--mute);margin-top:16px;font-size:17px;max-width:44ch;margin-inline:auto}
+
+  form{display:flex;gap:9px;margin-top:32px;flex-wrap:wrap;justify-content:center}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  input[type=email]{flex:1;min-width:210px;padding:13px 15px;border-radius:11px;
+    background:var(--surface);border:1px solid var(--hair);color:var(--ink);font:inherit;font-size:15px}
+  input[type=email]::placeholder{color:var(--faint)}
+  input[type=email]:focus{outline:2px solid var(--accent);outline-offset:2px;border-color:transparent}
+  button{font:inherit;font-size:15px;font-weight:700;padding:13px 22px;border-radius:11px;
+    border:0;background:var(--accent);color:#0d0812;cursor:pointer;transition:.15s}
+  button:hover{transform:translateY(-1px)}
+  button:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+
+  .ok{display:none;margin-top:32px;background:var(--surface);border:1px solid var(--accent-dim);
+    border-radius:12px;padding:18px}
+  .ok strong{color:var(--accent-2)}
+  .ok p{color:var(--mute);font-size:14.5px;margin-top:5px}
+  body.done form{display:none}
+  body.done .ok{display:block}
+
+  .fine{color:var(--faint);font-size:13px;margin-top:16px;font-family:var(--mono)}
+
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:14px;margin-top:46px;text-align:left}
+  .feat{background:var(--surface);border:1px solid var(--hair);border-radius:13px;padding:17px}
+  .feat h2{font-size:14.5px;font-weight:700}
+  .feat p{color:var(--mute);font-size:13.5px;margin-top:5px;line-height:1.55}
+
+  .count{margin-top:30px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+  .count b{color:var(--accent-2)}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="col">
+  <div class="mark">◆</div> <!-- EDIT: logo mark or <img> -->
+
+  <div class="eyebrow">Launching spring 2026</div>
+  <h1>Something quieter is coming.</h1> <!-- EDIT -->
+  <p class="lede">A focused writing tool with no notifications, no collaborators, and no AI. Just you and the page.</p>
+
+  <!-- EDIT: set action= to your form endpoint, or keep the JS demo behaviour -->
+  <form onsubmit="event.preventDefault();document.body.classList.add('done')">
+    <label class="sr" for="email">Email address</label>
+    <input id="email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+    <button type="submit">Join the waitlist</button>
+  </form>
+
+  <div class="ok" role="status">
+    <strong>You're on the list.</strong>
+    <p>We'll email you once — the day it opens. Nothing before that.</p>
+  </div>
+
+  <p class="fine">No spam. One email at launch. Unsubscribe anytime.</p>
+
+  <div class="feats">
+    <div class="feat"><h2>Offline first</h2><p>Everything works on a plane. Sync is optional, never required.</p></div>
+    <div class="feat"><h2>Plain files</h2><p>Markdown on your disk. No lock-in, no export step.</p></div>
+    <div class="feat"><h2>One-time price</h2><p>Buy it once. No subscription, no seats.</p></div>
+  </div>
+
+  <p class="count">Already <b>2,140</b> people waiting</p> <!-- EDIT -->
+</main>
+</body>
+</html>
